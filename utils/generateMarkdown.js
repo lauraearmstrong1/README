@@ -2,7 +2,7 @@ function generateMarkdown(data) {
   //console.log(data)
   return `
 # ${data.title}  
-![License Badge](https://img.shields.io/badge/license-${data.license}-blue.svg)  
+
   
 ## Description  
 
@@ -10,10 +10,17 @@ function generateMarkdown(data) {
 
 * [Installation](#installation)
 * [Usage](#usage)
+* [Credits](#credits)
+* [License](#license)
 
 ## Installation  
   
 ## Usage
+
+## Credits
+
+## License
+![License Badge](https://img.shields.io/badge/license-${data.license}-blue.svg)  
 
 `;
 }

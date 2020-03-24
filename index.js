@@ -30,7 +30,16 @@ function init() {
         name: "license",
         choices: ["MIT", "APACHE 2.0", "GPL 3.0", "BSD 3", "None"]
       },
-      
+      {
+        type: "input",
+        name: "usage",
+        message: "What does the user need to know to use this repository?"
+      },
+      {
+        type: "input",
+        name: "cedits",
+        message: "List any of your collaborators."
+      }
     
 
     ]).then(function(results) {
