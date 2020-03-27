@@ -1,12 +1,12 @@
 const api = require("./utils/api")
 const generateMarkdown = require("./utils/generateMarkdown")
 
-const questions = [
+// const questions = [
 
-];
+// ];
 
-function writeToFile(fileName, data) {
-}
+// function writeToFile(fileName, data) {
+// }
 
 function init() {
     var inquirer = require("inquirer");
