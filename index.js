@@ -1,13 +1,6 @@
 const api = require("./utils/api")
 const generateMarkdown = require("./utils/generateMarkdown")
 
-// const questions = [
-
-// ];
-
-// function writeToFile(fileName, data) {
-// }
-
 function init() {
     var inquirer = require("inquirer");
     var fs = require('fs');
@@ -23,12 +16,15 @@ function init() {
         name: "title",
         message: "What is the title of your project?"
       },
-
       {
-        type: "list",
-        message: "How is your project licensed?",
-        name: "license",
-        choices: ["MIT", "APACHE 2.0", "GPL 3.0", "BSD 3", "None"]
+        type: "input",
+        name: "description",
+        message: "What is the description of your project?"
+      },
+      {
+        type: "input",
+        name: "installation",
+        message: "What command is needed to install this application?"
       },
       {
         type: "input",
@@ -36,11 +32,21 @@ function init() {
         message: "What does the user need to know to use this repository?"
       },
       {
+        type: "list",
+        message: "How is your project licensed?",
+        name: "license",
+        choices: ["MIT", "APACHE 2.0", "GPL 3.0", "BSD 3"]
+      },
+      {
         type: "input",
-        name: "cedits",
+        name: "contributors",
         message: "List any of your collaborators."
+      },
+      {
+        type: "input",
+        name: "tests",
+        message: "What command is needed to test this application?"
       }
-    
 
     ]).then(function(results) {
         api.getUser(results.username).then(({data})=>{
@@ -55,7 +61,6 @@ function init() {
               });
 
         })
-    //   var filename = data.name.toLowerCase().split(' ').join('') + ".json";
     
     });
 }

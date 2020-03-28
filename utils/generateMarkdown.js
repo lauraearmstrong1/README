@@ -1,51 +1,46 @@
-function generateProject(github, title) {
-  const entertitle = title.toLowerCase().split(' ').join('-');
-  return `https://github.com/${github}/${entertitle}`
-}
-
-
-function renderBadge(license, github, title) {
-if(license !== "none") {
-  return `[![GitHub license](https://img.shields.io/badge/license-${license}-blue.svg)(${generateProject(github,title)})`
-}
-  return ""
-}
-
-
-function renderLicense(license) {
-  if(license !== "none") {
-    `## License
-    This licnese is: ${license}`
-  }
-}
-
+const emailCheck = email=> email ? email : "This user does not have a public email address."
 function generateMarkdown(data) {
  //console.log(data)
+ data.license= encodeURI(data.license)
   return `
 # ${data.title}  
-${renderBadge(data.license, data.github, data.title)}
+
   
 ## Description  
-${data.description}
+${data.description}  
 
 ## Table of Contents  
 
-* [Installation](#installation)
+* [Installation](#installation)  
 * [Usage](#usage)
-* [Credits](#credits)
 * [License](#license)
+* [Contributors](#contributors)
+* [Tests](#tests)
+* [Questions](#questions)
 
 ## Installation  
-To install the necessary dependencies, run this command: ${data.installation}
-  
+Command to Install:
+
+      ${data.installation}
+
 ## Usage
 ${data.usage}
-${renderLicense(data.license)}
 
+## License  
+![GitHub license](https://img.shields.io/badge/license-${data.license}-blue.svg)
 
-## Credits
-<img src="${data.avatar_url}">
-${data.email}
+## Contributors
+${data.contributors}
+
+## Tests
+      ${data.tests}
+
+## Questions
+If you have any questions, please contact the GitHub user.
+
+<img src="${data.avatar_url}">  
+
+Email: ${emailCheck(data.email)}
 
 `;
 }

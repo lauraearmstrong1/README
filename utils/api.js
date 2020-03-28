@@ -3,15 +3,17 @@ require('dotenv').config()
 
 const api = {
   getUser(username) { 
-    
-
+    let auth=""
+    if(process.env.CLIENT_ID && process.env.CLIENT_SECRET){
+      auth = `?client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}`
+    }
+    const url = `https://api.github.com/users/${username}${auth}`
+      
     return axios.get(
-      `https://api.github.com/users/${username}
-      ?client_id=${
-        process.env.CLIENT_ID
-        }&client_secret=${process.env.CLIENT_SECRET}`
+     url
     )
-        .catch(err => {
+
+    .catch(err => {
           console.log("Error!");
           process.exit(1);
         });
